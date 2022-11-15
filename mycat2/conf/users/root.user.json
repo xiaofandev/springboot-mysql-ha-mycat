@@ -1,0 +1,7 @@
+{
+    "dialect":"mysql",
+    "ip":null,
+    "password":"root",
+    "transactionType":"xa",
+    "username":"root"
+}

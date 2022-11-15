@@ -1,0 +1,61 @@
+version: '3.7'
+
+services:
+  mysql-master:
+    image: mysql:5.7
+    hostname: master
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - /d/docker/mysql-master/data:/var/lib/mysql
+      - /d/docker/mysql-master/log:/var/log/mysql
+      - /d/docker/mysql-master/conf/my.cnf:/etc/mysql/my.cnf
+    ports:
+      - 3306:3306
+
+  mysql-slave1:
+    image: mysql:5.7
+    hostname: slave1
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - /d/docker/mysql-slave1/data:/var/lib/mysql
+      - /d/docker/mysql-slave1/log:/var/log/mysql
+      - /d/docker/mysql-slave1/conf/my.cnf:/etc/mysql/my.cnf
+    ports:
+      - 3307:3306
+  
+  mysql-slave2:
+    image: mysql:5.7
+    hostname: slave2
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - /d/docker/mysql-slave2/data:/var/lib/mysql
+      - /d/docker/mysql-slave2/log:/var/log/mysql
+      - /d/docker/mysql-slave2/conf/my.cnf:/etc/mysql/my.cnf
+    ports:
+      - 3308:3306
+  
+  mysql-slave3:
+    image: mysql:5.7
+    hostname: slave3
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - /d/docker/mysql-slave3/data:/var/lib/mysql
+      - /d/docker/mysql-slave3/log:/var/log/mysql
+      - /d/docker/mysql-slave3/conf/my.cnf:/etc/mysql/my.cnf
+    ports:
+      - 3309:3306
+  
+  mycat2:
+    build: ./mycat2
+    hostname: mycat2
+    ports:
+      - 8066:8066
+    depends_on:
+      - mysql-master
+      - mysql-slave1
+      - mysql-slave2
+      - mysql-slave3

@@ -1,0 +1,21 @@
+{
+    "clusterType":"MASTER_SLAVE",
+    "heartbeat":{
+        "heartbeatTimeout":1000,
+        "maxRetry":3,
+        "minSwitchTimeInterval":300,
+        "slaveThreshold":0
+    },
+    "masters":[
+        "master"
+    ],
+    "replicas":[
+        "slave1",
+        "slave2",
+        "slave3"
+    ],
+    "maxCon":200,
+    "name":"master-slave",
+    "readBalanceType":"BALANCE_ALL_READ",
+    "switchType":"SWITCH"
+}
