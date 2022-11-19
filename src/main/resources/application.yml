@@ -1,0 +1,10 @@
+# 应用名称
+spring:
+  application:
+    name: springboot-mysql-ha-mycat
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:8066/test
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
